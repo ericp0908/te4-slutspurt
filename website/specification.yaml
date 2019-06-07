@@ -1,0 +1,192 @@
+CoroPostAPI 1.0
+info:
+  title: Coronet Post API
+  description: An API to create,read,modify and delete posts on the coronet website.
+  version 1.0
+
+paths:
+  /api/posts/:
+    get:
+      summary: Returns all posts in the database
+      description: Returns all posts in the database
+      responses:
+        '200':
+          description: A string with all the information about the posts
+          content:
+            application/json:
+              Schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: int
+                    title:
+                      type: string
+                    content:
+                      type: string
+                    date:
+                      type: string
+                    userId:
+                      type: int
+    post:
+      summary: Adds a post to the database
+      requestbody:
+        required: true
+        description: Adds a post to the database
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                date:
+                  type: string
+                userId:
+                  type: int
+                id:
+                  type: int
+        parameters:
+          title: string
+            in: path
+            required: true
+            description:
+              The title of the post
+          content: string
+            in: path
+            required: true
+            description:
+              the content of the post
+          date: string
+            in: path
+            required: true
+            description:
+              the date when the post was made
+
+
+    
+/api/posts/{postId}:
+  get:
+    summary: shows specific post
+      description: Inputs an ID and show the post with that id
+        responses:
+          '200':
+            description: shows all information about the post with the specified id
+            content:
+              application/json:
+                schema:
+                  type: arry
+                  properties:
+                    id:
+                      type: int
+                    title:
+                      type: string
+                    content:
+                      type: string
+                    date:
+                      type: string
+
+  delete:
+    summary: removes a post
+      description: takes an ID and deletes the post with that ID
+        requestBody: 
+          required: true
+          content:
+            application/json:
+              schema:
+                type: int
+                properties:
+                  id:
+                    type: int
+          parameters:
+          id: int
+            in: path
+            required: true
+
+
+        
+  patch:
+    summary: updates a post
+      desciption: takes and Id, title and content. And overwrites the title and content on the existing post with the id
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  id:
+                    type: int
+                  title:
+                    type: String
+                  content:
+                    type: String
+                  date:
+                    type: String
+          parameters:
+          title: string
+            in: path
+            required: true
+            description:
+              The title of the post
+          content: string
+            in: path
+            required: true
+            description:
+              the content of the post
+          date: string
+            in: path
+            required: true
+            description:
+              the date when the post was made
+
+
+                      
+                      
+/api/auth/:
+  get:
+    summary: show the logged in user
+      description: Shows the id and name of the logges in user
+        responses:
+          "200":
+            description: The Session cookie is read and the user id and name is printed out
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    properties:
+                      id:
+                        type: int
+                      name:
+                        type: String
+        
+  post:
+    summary: Login Details
+      description: The login details are sent and tested
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string
+          responses:
+            '200'
+              description: username and password are correct
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        id:
+                          type: int
+
+
+

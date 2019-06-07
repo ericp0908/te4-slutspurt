@@ -3,7 +3,6 @@
     height: 97vh;
     width: 70vw;
     margin: auto;
-    background-image: 
 }
 
 .logo{
@@ -38,11 +37,44 @@
     border-radius: 30px;
     background-color: gold;
     transition: 0.3s;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
     font-size: 20px;
-    align-items: center;
+    
     margin:10px;
+    text-align: center;
+    text-decoration: none;
+
+    
 }
 #bttn:hover{
-    opacity:0.6;
+    opacity:0.3;
 }
+#title{
+    height: 20px;
+}
+
+.weatherThing{
+    border: 3px solid blue;
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+}
+
+.rainIcon{
+    height: 24px;
+    width: 24px;
+    
+    
+}
+.cloudIcon{
+    height: 24px;
+    width: 24px;
+  
+    
+}
+

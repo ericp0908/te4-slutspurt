@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule api/posts/([0-9]+) api/posts/controller.php?id=$1
+RewriteRule api/posts/ api/posts/controller.php
+RewriteRule api/auth/ api/auth/controller.php
+</IfModule>

@@ -5,6 +5,7 @@
             DEFINE('DB_PASSWORD', 'root');
             DEFINE('DB_HOST', 'localhost');
             DEFINE('DB_DATABASE', 'Coronet');
+            session_start();
         
             $db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
             if ($db->connect_errno) {
@@ -37,6 +38,7 @@
                 echo "Query: " . $sql . "<br>";
                 echo "Errno: " . $db->errno . "<br>";
                 echo "Error: " . $db->error . "<br>";
+                
             }
             // Phew, we made it. We know our MySQL connection and query 
             // succeeded, but do we have a result?
@@ -56,10 +58,13 @@
             
         
             //kontrollera password
-            if($user['password'] === $_POST['password']){
-                setcookie("user_id", $user['id']);
+            if(password_verify($_POST['password'], $user['password'])){
+                $_SESSION["user_id"] = $user['id'];
             }
-                header("Location: /index.php", true, 303);
-                die();
+            else{
+                $_SESSION["error"] = "Wrong Username or Password";
+            }
+            header("Location: /index.php", true, 303);
+            die();
             $mysqli->close();
         ?>
